@@ -109,18 +109,23 @@ extension StaticTableViewController {
     }
 
     func moveRowAtIndexPath(indexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-//        let fromCellItem = cells[indexPath.section][indexPath.row]
-//        let toCellItem = cells[toIndexPath.section][toIndexPath.row]
-//        cells[indexPath.section].insert(toCellItem, atIndex: indexPath.row + 1)
-//
-//
-//
-//        cells[toIndexPath.section].insert(fromCellItem, atIndex: toIndexPath.row + 1)
-//        cells[toIndexPath.section].removeAtIndex(toIndexPath.row)
-//        cells[indexPath.section].removeAtIndex(indexPath.row)
+        let fromCellItem = cells[indexPath.section][indexPath.row]
+        if indexPath.section == toIndexPath.section {
+            if indexPath.row < toIndexPath.row {
+                cells[indexPath.section].insert(fromCellItem, atIndex: toIndexPath.row + 1)
+                cells[indexPath.section].removeAtIndex(indexPath.row)
+            } else if indexPath.row > toIndexPath.row {
+                cells[indexPath.section].insert(fromCellItem, atIndex: toIndexPath.row)
+                cells[indexPath.section].removeAtIndex(indexPath.row + 1)
+            } else {
+                return
+            }
+        } else {
+            cells[toIndexPath.section].insert(fromCellItem, atIndex: toIndexPath.row)
+            cells[indexPath.section].removeAtIndex(indexPath.row)
+        }
 
         tableView.moveRowAtIndexPath(indexPath, toIndexPath: toIndexPath)
-//        tableView.reloadRowsAtIndexPaths([indexPath, toIndexPath], withRowAnimation: .Automatic)
     }
 }
 

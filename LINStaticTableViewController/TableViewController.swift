@@ -28,6 +28,29 @@ class TableViewController: StaticTableViewController {
         return c
         }()
 
+    let cell4: UITableViewCell = {
+        let c = UITableViewCell()
+        c.textLabel?.text = "cell4"
+        return c
+        }()
+
+    let cell5: UITableViewCell = {
+        let c = UITableViewCell()
+        c.textLabel?.text = "cell5"
+        return c
+        }()
+
+    let cell6: UITableViewCell = {
+        let c = UITableViewCell()
+        c.textLabel?.text = "cell6"
+        return c
+        }()
+
+    let cell7: UITableViewCell = {
+        let c = UITableViewCell()
+        c.textLabel?.text = "cell7"
+        return c
+        }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +59,15 @@ class TableViewController: StaticTableViewController {
                       TablViewCellItem(cell: cell2, height: 44),
                       TablViewCellItem(cell: cell3, height: 44)])
 
+        cells.append([TablViewCellItem(cell: cell4, height: 44),
+                      TablViewCellItem(cell: cell5, height: 44),
+                      TablViewCellItem(cell: cell6, height: 44),
+                      TablViewCellItem(cell: cell7, height: 44)])
     }
 
     var count = 10
     func add() {
-        moveRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), toIndexPath: NSIndexPath(forRow: 2, inSection: 0))
+        moveRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0), toIndexPath: NSIndexPath(forRow: 0, inSection: 1))
 //        let cell = UITableViewCell()
 //        cell.textLabel?.text = "cell\(count)"
 //        count++
